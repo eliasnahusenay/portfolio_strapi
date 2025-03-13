@@ -1,13 +1,17 @@
 import Hero from "../components/Hero";
 
-export default function About() {
+const About = () => {
   return (
     <div>
-      <Hero title="About Me" image="/hero-about.jpg" />
-      <div className="p-6 text-center">
-        <h1 className="text-3xl font-bold">This is the About Page</h1>
-        <p className="mt-2 text-gray-600">Learn more about me here.</p>
+      <Hero title="About Me" />
+      <div className="container mx-auto p-4">
+        <h1 className="text-3xl font-bold">About Me</h1>
+        <p className="text-gray-700 mt-4">
+          I am a passionate full-stack developer with expertise in React, Tailwind, and Strapi.
+        </p>
       </div>
     </div>
   );
-}
+};
+
+export default About;

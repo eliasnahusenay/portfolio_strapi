@@ -1,13 +1,17 @@
 import Hero from "../components/Hero";
 
-export default function Projects() {
+const Projects = () => {
   return (
     <div>
-      <Hero title="My Projects" image="/hero-projects.jpg" />
-      <div className="p-6 text-center">
-        <h1 className="text-3xl font-bold">This is the Projects Page</h1>
-        <p className="mt-2 text-gray-600">Check out my latest projects here.</p>
+      <Hero title="My Projects" />
+      <div className="container mx-auto p-4">
+        <h1 className="text-3xl font-bold">Projects</h1>
+        <p className="text-gray-700 mt-4">
+          Here are some of the projects I've worked on.
+        </p>
       </div>
     </div>
   );
-}
+};
+
+export default Projects;
