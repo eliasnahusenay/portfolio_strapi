@@ -1,4 +1,4 @@
-const API_URL = "http://localhost:1337/api/blogs?populate=*";
+const API_URL = "http://localhost:1339/api/blogs?populate=*";
 
 export const fetchBlogs = async () => {
   try {
