@@ -2,7 +2,13 @@ export default [
   'strapi::logger',
   'strapi::errors',
   'strapi::security',
-  'strapi::cors',
+  {
+    name: 'strapi::cors',
+    config: {
+      enabled: true,
+      origin: ['http://localhost:5177'], //cors error got fixed by using correct port here.
+    },
+  },
   'strapi::poweredBy',
   'strapi::query',
   'strapi::body',
