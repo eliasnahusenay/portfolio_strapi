@@ -37,7 +37,7 @@ const About = () => {
           className="w-48 h-48 rounded-full shadow-lg border-4 border-blue-500 transform transition-transform duration-300 hover:scale-110"
         />
         <div className="md:ml-6 text-center md:text-left mt-4 md:mt-0">
-          <h2 className="text-2xl font-semibold">Hi, I'm John Doe!</h2>
+          <h2 className="text-2xl font-semibold">Hi, I'm Elias Hagos!</h2>
           <p className="mt-2 text-gray-400">{typewriterText}</p>
         </div>
       </div>
@@ -47,10 +47,10 @@ const About = () => {
         <h2 className="text-3xl font-semibold text-center">Skills</h2>
         <div className="flex justify-center space-x-6 mt-6">
           <SkillCard image={reactIcon} name="React" />
-          <SkillCard image={tailwindIcon} name="Tailwind CSS" />
           <SkillCard image={strapiIcon} name="Strapi" />
           <SkillCard image={symfonyIcon} name="Symfony" />
           <SkillCard image={phpIcon} name="PHP" />
+          <SkillCard image={tailwindIcon} name="Tailwind CSS" />
         </div>
       </div>
     </div>
