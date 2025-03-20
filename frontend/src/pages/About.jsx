@@ -14,6 +14,37 @@ const About = () => {
   ];
   const typewriterText = useTypewriter(texts, 100, 1000); // Use the hook
 
+  // Skills data with proficiency levels
+  const skills = [
+    { name: "React", icon: reactIcon, level: 90 },
+    { name: "Tailwind CSS", icon: tailwindIcon, level: 85 },
+    { name: "Strapi", icon: strapiIcon, level: 80 },
+    { name: "Symfony", icon: symfonyIcon, level: 75 },
+    { name: "PHP", icon: phpIcon, level: 70 },
+  ];
+
+  // Experience timeline data
+  const experience = [
+    {
+      year: "2023 - Present",
+      role: "Full-Stack Developer",
+      company: "XYZ Company",
+      description: "Building modern web applications using React and Node.js.",
+    },
+    {
+      year: "2021 - 2023",
+      role: "Freelance Web Developer",
+      company: "Self-Employed",
+      description: "Worked on various projects for clients across different industries.",
+    },
+    {
+      year: "2019 - 2021",
+      role: "Bachelor's Degree in Computer Science",
+      company: "University of ABC",
+      description: "Graduated with honors and a focus on web development.",
+    },
+  ];
+
   return (
     <div className="bg-gray-900 text-white">
       {/* Hero Section */}
@@ -39,30 +70,54 @@ const About = () => {
         <div className="md:ml-6 text-center md:text-left mt-4 md:mt-0">
           <h2 className="text-2xl font-semibold">Hi, I'm Elias Hagos!</h2>
           <p className="mt-2 text-gray-400">{typewriterText}</p>
+          <p className="mt-4 text-gray-400">
+            I’m a passionate full-stack developer with a love for building modern, scalable, and user-friendly web applications. Over the years, I’ve worked with a variety of technologies, including React, Tailwind CSS, Strapi, and Symfony, to deliver high-quality solutions for clients and personal projects.
+          </p>
         </div>
       </div>
 
       {/* Skills Section */}
       <div className="container mx-auto mt-10 p-6">
         <h2 className="text-3xl font-semibold text-center">Skills</h2>
-        <div className="flex justify-center space-x-6 mt-6">
-          <SkillCard image={reactIcon} name="React" />
-          <SkillCard image={strapiIcon} name="Strapi" />
-          <SkillCard image={symfonyIcon} name="Symfony" />
-          <SkillCard image={phpIcon} name="PHP" />
-          <SkillCard image={tailwindIcon} name="Tailwind CSS" />
+        <div className="mt-6 space-y-4">
+          {skills.map((skill, index) => (
+            <div key={index} className="space-y-2">
+              <div className="flex justify-between">
+                <span className="text-gray-300">{skill.name}</span>
+                <span className="text-gray-400">{skill.level}%</span>
+              </div>
+              <div className="w-full bg-gray-800 rounded-full h-2.5">
+                <div
+                  className="bg-blue-500 h-2.5 rounded-full"
+                  style={{ width: `${skill.level}%` }}
+                ></div>
+              </div>
+            </div>
+          ))}
         </div>
       </div>
-    </div>
-  );
-};
 
-// Reusable Skill Card Component
-const SkillCard = ({ image, name }) => {
-  return (
-    <div className="flex flex-col items-center p-4 bg-gray-800 rounded-lg shadow-lg transform transition-transform duration-300 hover:scale-105">
-      <img src={image} alt={name} className="w-16 h-16" />
-      <p className="mt-2 text-gray-300">{name}</p>
+      {/* Experience Timeline */}
+      <div className="container mx-auto mt-10 p-6">
+        <h2 className="text-3xl font-semibold text-center">Experience</h2>
+        <div className="mt-6 space-y-6">
+          {experience.map((exp, index) => (
+            <div key={index} className="p-4 bg-gray-800 rounded-lg">
+              <h3 className="text-xl font-semibold">{exp.role}</h3>
+              <p className="text-gray-400">{exp.company} | {exp.year}</p>
+              <p className="mt-2 text-gray-400">{exp.description}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Personal Interests */}
+      <div className="container mx-auto mt-10 p-6">
+        <h2 className="text-3xl font-semibold text-center">Personal Interests</h2>
+        <p className="mt-4 text-gray-400 text-center">
+          When I’m not coding, I enjoy hiking, photography, and playing the guitar. I believe in maintaining a healthy work-life balance and constantly learning new things.
+        </p>
+      </div>
     </div>
   );
 };
