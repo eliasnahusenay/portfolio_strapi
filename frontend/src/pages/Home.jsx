@@ -4,6 +4,7 @@ import Hero from "../components/Hero";
 import ProjectCard from "../components/ProjectCard";
 import SkillChart from "../components/SkillChart.jsx";
 import TestimonialCarousel from "../components/TestimonialCarousel";
+import profileImage from "../assets/profile.jpeg";
 
 const Home = () => {
   const heroText = useTypewriter([
@@ -31,27 +32,27 @@ const Home = () => {
         </button>
       </Hero>
 
-      {/* About Me Section */}
+      {/* About Me Teaser Section */}
       <section className="container mx-auto p-6">
         <div className="flex flex-col md:flex-row items-center">
           <img
-            src="/profile.jpg"
+            src={profileImage}
             alt="Profile"
             className="w-48 h-48 rounded-full shadow-lg border-4 border-blue-500"
           />
           <div className="md:ml-6 text-center md:text-left mt-4 md:mt-0">
             <h2 className="text-2xl font-semibold">Hi, I'm John Doe!</h2>
             <p className="mt-2 text-gray-600 dark:text-gray-400">
-              I’m a full-stack developer specializing in React, Tailwind, and Strapi. Let's build something amazing together!
+              I’m a full-stack developer specializing in React, Tailwind, and Strapi. I love building scalable and user-friendly web applications. Let’s build something amazing together!
             </p>
             <a href="/about" className="text-blue-500 hover:underline mt-4 inline-block">
-              Learn More About Me
+              Discover My Journey
             </a>
           </div>
         </div>
       </section>
 
-      {/* Featured Projects */}
+      {/* Featured Projects Section */}
       <section className="container mx-auto p-6">
         <h2 className="text-3xl font-bold text-center">Featured Projects</h2>
         <div className="mt-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
