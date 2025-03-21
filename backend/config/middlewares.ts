@@ -6,7 +6,7 @@ export default [
     name: 'strapi::cors',
     config: {
       enabled: true,
-      origin: ['http://localhost:5177'], //cors error got fixed by using correct port here.
+      origin: ['http://localhost:5173'], //cors error got fixed by using correct port here.
     },
   },
   'strapi::poweredBy',
