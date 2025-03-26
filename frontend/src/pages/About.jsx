@@ -7,6 +7,7 @@ import symfonyIcon from "../assets/skills/symfony.png";
 import phpIcon from "../assets/skills/php.png";
 import { FaCode, FaGraduationCap, FaBriefcase, FaTools } from "react-icons/fa";
 import { motion } from "framer-motion";
+import { useState, useEffect } from "react";
 
 const About = () => {
   // Animation variants
@@ -15,115 +16,133 @@ const About = () => {
     visible: { opacity: 1, y: 0 }
   };
 
+  // Loading state
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    // Simulate loading
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 800);
+
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
-    <div className="bg-gray-50">
+    <div className="bg-gray-50 min-h-screen flex flex-col">
       {/* Hero Section - Consistent with Home page */}
       <Hero title="About Me" subtitle="Full-Stack Developer | Passionate about Web Development" />
 
-      {/* Main Content */}
-      <div className="container mx-auto px-4 py-12">
-        {/* Profile & Introduction */}
-        <motion.section
-          className="flex flex-col md:flex-row items-center gap-8 mb-16"
-          initial="hidden"
-          animate="visible"
-          variants={fadeIn}
-        >
-          <motion.img
-            src={profileImage}
-            alt="Profile"
-            className="w-48 h-48 rounded-full shadow-xl border-4 border-blue-500"
-            whileHover={{ scale: 1.05 }}
-          />
-          <div>
-            <h2 className="text-3xl font-bold text-gray-800">Hi, I'm Elias Hagos</h2>
-            <p className="text-lg text-gray-600 mt-4">
-              I'm a full-stack web developer specializing in building exceptional digital experiences.
-              With expertise in both frontend and backend technologies, I create seamless,
-              user-friendly applications that solve real problems.
-            </p>
-          </div>
-        </motion.section>
+      {/* Show spinner while loading */}
+      {isLoading ? (
+        <div className="flex-1 flex justify-center items-center py-12">
+          <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-blue-500"></div>
+        </div>
+      ) : (
+        <div className="container mx-auto px-4 py-12 flex-1">
+          {/* Profile & Introduction */}
+          <motion.section
+            className="flex flex-col md:flex-row items-center gap-8 mb-16"
+            initial="hidden"
+            animate="visible"
+            variants={fadeIn}
+          >
+            <motion.img
+              src={profileImage}
+              alt="Profile"
+              className="w-48 h-48 rounded-full shadow-xl border-4 border-blue-500"
+              whileHover={{ scale: 1.05 }}
+            />
+            <div>
+              <h2 className="text-3xl font-bold text-gray-800">Hi, I'm Elias Hagos</h2>
+              <p className="text-lg text-gray-600 mt-4">
+                I'm a full-stack web developer specializing in building exceptional digital experiences.
+                With expertise in both frontend and backend technologies, I create seamless,
+                user-friendly applications that solve real problems.
+              </p>
+            </div>
+          </motion.section>
 
-        {/* Skills Section */}
-        <motion.section
-          className="mb-16"
-          initial="hidden"
-          animate="visible"
-          variants={fadeIn}
-          transition={{ delay: 0.1 }}
-        >
-          <div className="flex items-center mb-8">
-            <FaCode className="text-blue-500 text-2xl mr-3" />
-            <h2 className="text-2xl font-bold text-gray-800">My Skills</h2>
-          </div>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
-            {skills.map((skill, index) => (
-              <SkillCard key={index} {...skill} index={index} />
-            ))}
-          </div>
-        </motion.section>
+          {/* Skills Section */}
+          <motion.section
+            className="mb-16"
+            initial="hidden"
+            animate="visible"
+            variants={fadeIn}
+            transition={{ delay: 0.1 }}
+          >
+            <div className="flex items-center mb-8">
+              <FaCode className="text-blue-500 text-2xl mr-3" />
+              <h2 className="text-2xl font-bold text-gray-800">My Skills</h2>
+            </div>
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
+              {skills.map((skill, index) => (
+                <SkillCard key={index} {...skill} index={index} />
+              ))}
+            </div>
+          </motion.section>
 
-        {/* Experience Section */}
-        <motion.section
-          className="mb-16 bg-white p-8 rounded-xl shadow-md"
-          initial="hidden"
-          animate="visible"
-          variants={fadeIn}
-          transition={{ delay: 0.2 }}
-        >
-          <div className="flex items-center mb-8">
-            <FaBriefcase className="text-blue-500 text-2xl mr-3" />
-            <h2 className="text-2xl font-bold text-gray-800">Professional Experience</h2>
-          </div>
-          <div className="space-y-8">
-            {experience.map((exp, index) => (
-              <ExperienceItem key={index} {...exp} index={index} />
-            ))}
-          </div>
-        </motion.section>
+          {/* Experience Section */}
+          <motion.section
+            className="mb-16 bg-white p-8 rounded-xl shadow-md"
+            initial="hidden"
+            animate="visible"
+            variants={fadeIn}
+            transition={{ delay: 0.2 }}
+          >
+            <div className="flex items-center mb-8">
+              <FaBriefcase className="text-blue-500 text-2xl mr-3" />
+              <h2 className="text-2xl font-bold text-gray-800">Professional Experience</h2>
+            </div>
+            <div className="space-y-8">
+              {experience.map((exp, index) => (
+                <ExperienceItem key={index} {...exp} index={index} />
+              ))}
+            </div>
+          </motion.section>
 
-        {/* Education Section */}
-        <motion.section
-          className="mb-16"
-          initial="hidden"
-          animate="visible"
-          variants={fadeIn}
-          transition={{ delay: 0.3 }}
-        >
-          <div className="flex items-center mb-8">
-            <FaGraduationCap className="text-blue-500 text-2xl mr-3" />
-            <h2 className="text-2xl font-bold text-gray-800">Education</h2>
-          </div>
-          <div className="grid md:grid-cols-2 gap-6">
-            {education.map((edu, index) => (
-              <EducationItem key={index} {...edu} />
-            ))}
-          </div>
-        </motion.section>
+          {/* Education Section */}
+          <motion.section
+            className="mb-16"
+            initial="hidden"
+            animate="visible"
+            variants={fadeIn}
+            transition={{ delay: 0.3 }}
+          >
+            <div className="flex items-center mb-8">
+              <FaGraduationCap className="text-blue-500 text-2xl mr-3" />
+              <h2 className="text-2xl font-bold text-gray-800">Education</h2>
+            </div>
+            <div className="grid md:grid-cols-2 gap-6">
+              {education.map((edu, index) => (
+                <EducationItem key={index} {...edu} />
+              ))}
+            </div>
+          </motion.section>
 
-        {/* Tools Section */}
-        <motion.section
-          className="bg-white p-8 rounded-xl shadow-md"
-          initial="hidden"
-          animate="visible"
-          variants={fadeIn}
-          transition={{ delay: 0.4 }}
-        >
-          <div className="flex items-center mb-8">
-            <FaTools className="text-blue-500 text-2xl mr-3" />
-            <h2 className="text-2xl font-bold text-gray-800">Tools & Technologies</h2>
-          </div>
-          <div className="flex flex-wrap gap-4">
-            {tools.map((tool, index) => (
-              <div key={index} className="px-4 py-2 bg-blue-50 rounded-full flex items-center">
-                <img src={tool.icon} alt={tool.name} className="w-5 h-5 mr-2" />
-                <span className="text-gray-700">{tool.name}</span>
-              </div>
-            ))}
-          </div>
-        </motion.section>
-      </div>
+          {/* Tools Section */}
+          <motion.section
+            className="bg-white p-8 rounded-xl shadow-md"
+            initial="hidden"
+            animate="visible"
+            variants={fadeIn}
+            transition={{ delay: 0.4 }}
+          >
+            <div className="flex items-center mb-8">
+              <FaTools className="text-blue-500 text-2xl mr-3" />
+              <h2 className="text-2xl font-bold text-gray-800">Tools & Technologies</h2>
+            </div>
+            <div className="flex flex-wrap gap-4">
+              {tools.map((tool, index) => (
+                <div key={index} className="px-4 py-2 bg-blue-50 rounded-full flex items-center">
+                  <img src={tool.icon} alt={tool.name} className="w-5 h-5 mr-2" />
+                  <span className="text-gray-700">{tool.name}</span>
+                </div>
+              ))}
+            </div>
+          </motion.section>
+        </div>
+      )}
     </div>
   );
 };
