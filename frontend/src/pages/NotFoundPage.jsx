@@ -65,7 +65,7 @@ const NotFoundPage = () => {
               <svg
                 className="w-64 h-64 mx-auto"
                 viewBox="0 0 200 200"
-                xmlns="http://www.w3.org/2000/svg"
+                xmlns=""
               >
                 <circle cx="100" cy="100" r="80" fill="#1E40AF" fillOpacity="0.1" />
                 <circle cx="40" cy="60" r="5" fill="#F59E0B" />
