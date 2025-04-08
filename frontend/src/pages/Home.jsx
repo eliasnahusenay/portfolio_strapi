@@ -22,17 +22,17 @@ const Home = () => {
   const featuredProjects = [
     {
       id: 1,
-      title: "E-Commerce Platform",
+      title: "Redux online store app",
       description: "Full-featured online store with React & Strapi backend",
-      tags: ["React", "Strapi", "Tailwind"],
+      tags: ["React", "Redux", "Bootstrap"],
       image: project1,
-      link: "/projects/1"
+      link: "https://github.com/nahusenayElias/online-store-redux-app"
     },
     {
       id: 2,
-      title: "Portfolio CMS",
-      description: "Custom content management system for creatives",
-      tags: ["React", "Node.js", "MongoDB"],
+      title: "Countries App",
+      description: "Countries react app, we can add favourite countries, remove favourite and used News API from selected to display top ten news",
+      tags: ["React", "Firebase", "Tailwind"],
       image: project2,
       link: "/projects/2"
     },
@@ -43,6 +43,30 @@ const Home = () => {
       tags: ["React", "Firebase", "Redux"],
       image: project3,
       link: "/projects/3"
+    },
+    {
+      id: 4,
+      title: "Redux online store app",
+      description: "Full-featured online store with React & Strapi backend",
+      tags: ["React", "Redux", "Bootstrap"],
+      image: project1,
+      link: "https://github.com/nahusenayElias/online-store-redux-app"
+    },
+    {
+      id: 5,
+      title: "Redux online store app",
+      description: "Full-featured online store with React & Strapi backend",
+      tags: ["React", "Redux", "Bootstrap"],
+      image: project1,
+      link: "https://github.com/nahusenayElias/online-store-redux-app"
+    },
+    {
+      id: 6,
+      title: "Redux online store app",
+      description: "Full-featured online store with React & Strapi backend",
+      tags: ["React", "Redux", "Bootstrap"],
+      image: project1,
+      link: "https://github.com/nahusenayElias/online-store-redux-app"
     }
   ];
 
