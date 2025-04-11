@@ -54,10 +54,10 @@ const generateResumePDF = async (resumeData) => {
     doc.setTextColor(...colors.secondary);
     doc.setFont("helvetica", "bold");
 
-    // Contact info with icons (using unicode characters as mock icons)
-    doc.text(`✉ ${personalInfo.email}`, 20, contactY);
-    doc.text(`☎ ${personalInfo.phone}`, 85, contactY);
-    doc.text(`📍 ${personalInfo.location}`, 150, contactY);
+    // Contact info without Unicode icons that might cause issues
+    doc.text("Email: " + personalInfo.email, 20, contactY);
+    doc.text("Phone: " + personalInfo.phone, 85, contactY);
+    doc.text("Location: " + personalInfo.location, 150, contactY);
 
     // Add profile photo if available
     if (personalInfo.photo) {
@@ -127,7 +127,7 @@ const generateResumePDF = async (resumeData) => {
 
       doc.setFontSize(10);
       doc.setTextColor(...colors.primary);
-      doc.text(`${exp.company} • ${exp.period || exp.duration}`, 25, yPosition + 6);
+      doc.text(`${exp.company} - ${exp.period || exp.duration}`, 25, yPosition + 6);
 
       doc.setFontSize(9);
       doc.setTextColor(...colors.text);
@@ -193,7 +193,7 @@ const generateResumePDF = async (resumeData) => {
     doc.text("SKILLS", 20, yPosition - 5);
     yPosition += 10;
 
-    // Create skills table manually since autoTable may not be working
+    // Create skills table manually
     if (skills.length > 0) {
       // Table header
       doc.setFillColor(...colors.primary);
