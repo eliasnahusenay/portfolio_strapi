@@ -1,4 +1,3 @@
-// src/components/ResumeContent.jsx
 import profileImage from "../assets/images/profile.jpeg";
 import qrCodeImage from "../assets/images/frame.png";
 
@@ -6,9 +5,9 @@ const ResumeContent = {
   personalInfo: {
     name: "Elias Hagos",
     title: "Full-Stack Developer",
-    email: "elias@example.com",
-    phone: "+1 (234) 567-8900",
-    location: "San Francisco, CA",
+    email: "eliasars@yahoo.com",
+    phone: "+358449125794",
+    location: "Helsinki, Finland",
     photo: profileImage,
     qrCode: qrCodeImage,
     summary: "Full-stack developer with 5+ years experience building web applications. Specializing in React, Node.js, and modern web technologies to create responsive and user-friendly applications."
@@ -37,14 +36,14 @@ const ResumeContent = {
 
   education: [
     {
-      degree: "BSc Computer Science",
-      institution: "Stanford University",
-      year: "2016"
+      degree: "Masters of Art Degree",
+      institution: "University of Helsinki",
+      year: "2015"
     },
     {
-      degree: "Web Development Bootcamp",
-      institution: "Code Academy",
-      year: "2017"
+      degree: "Full Stack Web Development",
+      institution: "Business College Helsinki",
+      year: "2025"
     }
   ],
 
