@@ -73,11 +73,10 @@ const About = () => {
   const handleDownloadResume = async () => {
     setIsGeneratingPdf(true);
     try {
-      // Prepare complete resume data
       const resumeData = {
         personalInfo: {
           ...personalInfo,
-          photo: profileImage // Ensure photo is included
+          photo: profileImage
         },
         skills: skills.map(skill => ({
           ...skill,
@@ -92,7 +91,6 @@ const About = () => {
           ...skills.filter(skill => skill.featured)
         ]
       };
-
       await generateResumePDF(resumeData);
     } catch (error) {
       console.error("Failed to generate PDF:", error);
@@ -108,11 +106,19 @@ const About = () => {
     ? skills
     : skills.filter(skill => skill.category === activeCategory);
 
-  // Combine static and dynamic featured skills
   const allFeaturedSkills = [...staticFeaturedSkills, ...skills.filter(skill => skill.featured)];
 
   return (
-    <div className="bg-gray-50 min-h-screen flex flex-col">
+    <div className="bg-gray-50 min-h-screen flex flex-col relative overflow-hidden">
+      {/* Background Blob */}
+      <div className="absolute top-0 right-0 w-[500px] h-[500px] opacity-5 -z-10">
+        <img
+          src="/blobsvg.svg"
+          alt="Background decoration"
+          className="w-full h-full"
+        />
+      </div>
+
       <Hero
         title="About Me"
         subtitle="Full-Stack Developer | Passionate about Web Development"
@@ -149,17 +155,32 @@ const About = () => {
         <div className="container mx-auto px-4 py-8 flex-1" id="resume-content">
           {/* Profile Section */}
           <motion.section
-            className="flex flex-col md:flex-row items-center gap-8 mb-16"
+            className="flex flex-col md:flex-row items-center gap-8 mb-16 relative"
             initial="hidden"
             animate="visible"
             variants={fadeIn}
           >
-            <motion.img
-              src={profileImage}
-              alt="Profile"
-              className="w-48 h-48 rounded-full shadow-xl border-4 border-blue-500"
-              whileHover={{ scale: 1.05 }}
-            />
+            {/* Profile Photo Container */}
+            <div className="relative">
+              {/* Photo Frame Blob */}
+              <div className="absolute -top-6 -left-6 w-60 h-60 -z-10">
+                <img
+                  src="/blobsvg.svg"
+                  alt="Profile frame"
+                  className="w-full h-full opacity-30"
+                />
+              </div>
+
+              {/* Profile Image */}
+              <motion.img
+                src={profileImage}
+                alt="Profile"
+                className="relative w-48 h-48 rounded-full shadow-xl border-4 border-blue-500 bg-white"
+                whileHover={{ scale: 1.05 }}
+              />
+            </div>
+
+            {/* Profile Text Content */}
             <div>
               <h2 className="text-3xl font-bold text-gray-800">
                 Hi, I'm {personalInfo.name}
