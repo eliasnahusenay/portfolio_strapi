@@ -1,6 +1,9 @@
 import profileImage from "../assets/images/profile.jpeg";
 import qrCodeImage from "../assets/images/frame.png";
-// We don't need to import React Icons here as we'll just use identifiers
+
+import emailIcon from "../assets/icons/email.png";
+import phoneIcon from "../assets/icons/phone.png";
+import locationIcon from "../assets/icons/location.png";
 
 const ResumeContent = {
   personalInfo: {
@@ -8,19 +11,20 @@ const ResumeContent = {
     title: "Full-Stack Developer",
     email: {
       text: "eliasars@yahoo.com",
-      icon: "email" // Icon identifier for the PDF generator
+      icon: emailIcon
     },
     phone: {
       text: "+358449125794",
-      icon: "phone" // Icon identifier for the PDF generator
+      icon: phoneIcon
     },
     location: {
       text: "Helsinki, Finland",
-      icon: "location" // Icon identifier for the PDF generator
+      icon: locationIcon
     },
     photo: profileImage,
     qrCode: qrCodeImage,
-    summary: "Humanities graduate with two years of government and non-governmental work experience, transitioning into web development. Combining strong analytical skills from humanities background with emerging technical expertise in web technologies. Passionate about learning and overcoming new challenges in web development."
+    summary:
+      "Humanities graduate with two years of government and non-governmental work experience, transitioning into web development. Combining strong analytical skills from humanities background with emerging technical expertise in web technologies. Passionate about learning and overcoming new challenges in web development."
   },
 
   stats: [
@@ -30,16 +34,18 @@ const ResumeContent = {
 
   experience: [
     {
-      position: "freelancer",
+      position: "Freelancer",
       company: "Digital Agency",
-      period: "2025-present",
-      description: "Developed responsive websites and e-commerce platforms for various clients using modern frontend and backend frameworks."
+      period: "2025–present",
+      description:
+        "Developed responsive websites and e-commerce platforms for various clients using modern frontend and backend frameworks."
     },
     {
       position: "Capacity Building Officer",
       company: "INSA, Ethiopia",
-      period: "2010-12",
-      description: "Part of the capacity building team in INSA a governmental organization and served as capacity building expert."
+      period: "2010–2012",
+      description:
+        "Part of the capacity building team in INSA, a governmental organization, and served as a capacity building expert."
     }
   ],
 
@@ -50,7 +56,8 @@ const ResumeContent = {
       year: "2025"
     },
     {
-      degree: "Master of Arts in Adult Education and Developmental Work Research",
+      degree:
+        "Master of Arts in Adult Education and Developmental Work Research",
       institution: "University of Helsinki",
       year: "2015"
     },
@@ -71,17 +78,55 @@ const ResumeContent = {
   ],
 
   featuredSkills: [
-    { name: "React", percentage: 90, icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg", featured: true },
-    { name: "Node.js", percentage: 85, icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg", featured: true },
-    { name: "JavaScript", percentage: 95, icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg", featured: true }
+    {
+      name: "React",
+      percentage: 90,
+      icon:
+        "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg",
+      featured: true
+    },
+    {
+      name: "Node.js",
+      percentage: 85,
+      icon:
+        "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg",
+      featured: true
+    },
+    {
+      name: "JavaScript",
+      percentage: 95,
+      icon:
+        "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg",
+      featured: true
+    }
   ],
 
   tools: [
-    { name: "VS Code", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" },
-    { name: "Git", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" },
-    { name: "Docker", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" },
-    { name: "Jest", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jest/jest-plain.svg" },
-    { name: "Figma", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg" }
+    {
+      name: "VS Code",
+      icon:
+        "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg"
+    },
+    {
+      name: "Git",
+      icon:
+        "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg"
+    },
+    {
+      name: "Docker",
+      icon:
+        "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg"
+    },
+    {
+      name: "Jest",
+      icon:
+        "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jest/jest-plain.svg"
+    },
+    {
+      name: "Figma",
+      icon:
+        "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg"
+    }
   ]
 };
 
