@@ -53,10 +53,39 @@ const generateResumePDF = async (resumeData) => {
     doc.setTextColor(...colors.secondary);
     doc.setFont("helvetica", "bold");
 
-    // Contact info with text-based icons that work well in PDFs
-    doc.text("Email: " + personalInfo.email.text, 20, contactY);
-    doc.text("Phone: " + personalInfo.phone.text, 85, contactY);
-    doc.text("Location: " + personalInfo.location.text, 150, contactY);
+    // Contact info with icons
+    // Create a promise to load all icons first
+    const loadIcons = async () => {
+      const icons = [
+        { src: personalInfo.email.icon, x: 20, y: contactY - 5, text: personalInfo.email.text, textX: 30 },
+        { src: personalInfo.phone.icon, x: 85, y: contactY - 5, text: personalInfo.phone.text, textX: 95 },
+        { src: personalInfo.location.icon, x: 150, y: contactY - 5, text: personalInfo.location.text, textX: 160 }
+      ];
+
+      for (const icon of icons) {
+        try {
+          const img = new Image();
+          img.src = icon.src;
+          await new Promise((resolve, reject) => {
+            img.onload = resolve;
+            img.onerror = reject;
+          });
+
+          // Add icon image
+          doc.addImage(img, 'PNG', icon.x, icon.y, 8, 8);
+
+          // Add text next to icon
+          doc.text(icon.text, icon.textX, contactY);
+        } catch (error) {
+          console.error(`Error adding icon for ${icon.text}:`, error);
+          // Fallback: just add text without icon
+          doc.text(`${icon.text}`, icon.x, contactY);
+        }
+      }
+    };
+
+    // Wait for icons to be loaded and added
+    await loadIcons();
 
     // Add profile photo if available
     if (personalInfo.photo) {
