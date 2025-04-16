@@ -1,4 +1,3 @@
-// src/utils/PdfGenerator.js
 import { jsPDF } from "jspdf";
 import autoTable from 'jspdf-autotable';
 
@@ -54,10 +53,10 @@ const generateResumePDF = async (resumeData) => {
     doc.setTextColor(...colors.secondary);
     doc.setFont("helvetica", "bold");
 
-    // Contact info without Unicode icons that might cause issues
-    doc.text("Email: " + personalInfo.email, 20, contactY);
-    doc.text("Phone: " + personalInfo.phone, 85, contactY);
-    doc.text("Location: " + personalInfo.location, 150, contactY);
+    // Contact info with text-based icons that work well in PDFs
+    doc.text("Email: " + personalInfo.email.text, 20, contactY);
+    doc.text("Phone: " + personalInfo.phone.text, 85, contactY);
+    doc.text("Location: " + personalInfo.location.text, 150, contactY);
 
     // Add profile photo if available
     if (personalInfo.photo) {
@@ -108,8 +107,14 @@ const generateResumePDF = async (resumeData) => {
     yPosition += 10;
 
     experience.forEach((exp, index) => {
+      // Check if we need to add a new page
+      if (yPosition > 260) {
+        doc.addPage();
+        yPosition = 20;
+      }
+
       // Timeline connector
-      if (index > 0) {
+      if (index > 0 && yPosition > 30) {
         doc.setDrawColor(...colors.light);
         doc.setLineWidth(0.5);
         doc.line(20, yPosition - 15, 20, yPosition);
@@ -141,6 +146,12 @@ const generateResumePDF = async (resumeData) => {
     // Add education section
     yPosition += 5;
 
+    // Check if we need to add a new page
+    if (yPosition > 260) {
+      doc.addPage();
+      yPosition = 20;
+    }
+
     doc.setFillColor(...colors.primary);
     doc.rect(0, yPosition - 10, 210, 8, 'F');
 
@@ -156,24 +167,37 @@ const generateResumePDF = async (resumeData) => {
     const eduGap = 10;
 
     education.forEach((edu, index) => {
-      const colIndex = index % eduColumns;
+      // Check if education will fit on current page, if not add a new page
       const rowIndex = Math.floor(index / eduColumns);
+      if (yPosition + (rowIndex * 25) > 260) {
+        doc.addPage();
+        yPosition = 20;
+      }
+
+      const colIndex = index % eduColumns;
+      const adjustedRowIndex = Math.floor((index - (rowIndex * eduColumns)) / eduColumns);
       const xPos = 20 + (colIndex * (eduWidth + eduGap));
-      const yPos = yPosition + (rowIndex * 25);
+      const yPos = yPosition + (adjustedRowIndex * 25);
 
       // Education box with styling
       doc.setFillColor(...colors.light);
       doc.roundedRect(xPos, yPos - 5, eduWidth, 20, 2, 2, 'F');
 
+      // Degree (truncate if too long)
       doc.setFontSize(10);
       doc.setTextColor(...colors.secondary);
       doc.setFont("helvetica", "bold");
-      doc.text(edu.degree, xPos + 4, yPos);
+      const degreeText = doc.splitTextToSize(edu.degree, eduWidth - 8);
+      doc.text(degreeText[0], xPos + 4, yPos);
 
+      // Institution (truncate if too long and ensure it fits within box)
       doc.setFontSize(9);
       doc.setTextColor(...colors.primary);
-      doc.text(edu.institution, xPos + 4, yPos + 6);
+      const institutionLines = doc.splitTextToSize(edu.institution, eduWidth - 8);
+      // Only use first line to prevent overflow
+      doc.text(institutionLines[0], xPos + 4, yPos + 6);
 
+      // Year
       doc.setFontSize(8);
       doc.setTextColor(...colors.text);
       doc.setFont("helvetica", "normal");
@@ -182,6 +206,12 @@ const generateResumePDF = async (resumeData) => {
 
     // Update y position based on education rows
     yPosition += 25 * Math.ceil(education.length / eduColumns) + 15;
+
+    // Check if we need to add a new page for skills
+    if (yPosition > 260) {
+      doc.addPage();
+      yPosition = 20;
+    }
 
     // Add skills section
     doc.setFillColor(...colors.primary);
@@ -209,7 +239,27 @@ const generateResumePDF = async (resumeData) => {
 
       // Table rows
       skills.forEach((skill, index) => {
+        // Check if we need to add a new page for skills overflow
+        if (yPosition + (index * 12) > 260) {
+          doc.addPage();
+          yPosition = 20;
+
+          // Redraw the header on the new page
+          doc.setFillColor(...colors.primary);
+          doc.rect(20, yPosition - 5, 170, 8, 'F');
+
+          doc.setFontSize(10);
+          doc.setTextColor(...colors.white);
+          doc.setFont("helvetica", "bold");
+          doc.text("Skill", 25, yPosition);
+          doc.text("Proficiency", 120, yPosition);
+
+          yPosition += 8;
+          index = 0; // Reset the index for proper row positioning
+        }
+
         const rowY = yPosition + (index * 12);
+
         // Alternate row background
         if (index % 2 === 0) {
           doc.setFillColor(245, 245, 245);
@@ -238,45 +288,51 @@ const generateResumePDF = async (resumeData) => {
       yPosition += (skills.length * 12) + 10;
     }
 
-    // Add tools section if space allows
-    if (yPosition < 270) { // Check if we have enough space
-      doc.setFillColor(...colors.primary);
-      doc.rect(0, yPosition - 10, 210, 8, 'F');
-
-      doc.setFontSize(14);
-      doc.setTextColor(...colors.white);
-      doc.setFont("helvetica", "bold");
-      doc.text("TOOLS & TECHNOLOGIES", 20, yPosition - 5);
-      yPosition += 10;
-
-      // Create a grid of tool badges
-      const toolColumns = 4;
-      const toolWidth = 40;
-      const toolGap = 5;
-      const toolHeight = 10;
-
-      tools.forEach((tool, index) => {
-        const colIndex = index % toolColumns;
-        const rowIndex = Math.floor(index / toolColumns);
-        const xPos = 20 + (colIndex * (toolWidth + toolGap));
-        const yPos = yPosition + (rowIndex * (toolHeight + 5));
-
-        // Tool badge
-        doc.setFillColor(...colors.light);
-        doc.roundedRect(xPos, yPos, toolWidth, toolHeight, 2, 2, 'F');
-
-        doc.setFontSize(8);
-        doc.setTextColor(...colors.text);
-        doc.setFont("helvetica", "normal");
-        doc.text(tool.name, xPos + toolWidth/2, yPos + toolHeight/2, { align: 'center', baseline: 'middle' });
-      });
+    // Check if we need to add a new page for tools section
+    if (yPosition > 260) {
+      doc.addPage();
+      yPosition = 20;
     }
 
-    // Add footer
+    // Add tools section with descriptive label instead of icons
+    doc.setFillColor(...colors.primary);
+    doc.rect(0, yPosition - 10, 210, 8, 'F');
+
+    doc.setFontSize(14);
+    doc.setTextColor(...colors.white);
+    doc.setFont("helvetica", "bold");
+    doc.text("TOOLS & TECHNOLOGIES", 20, yPosition - 5);
+    yPosition += 10;
+
+    // Create a grid of tool badges without problematic icons
+    const toolColumns = 3;
+    const toolWidth = 50;
+    const toolGap = 5;
+    const toolHeight = 15;
+
+    tools.forEach((tool, index) => {
+      const colIndex = index % toolColumns;
+      const rowIndex = Math.floor(index / toolColumns);
+      const xPos = 20 + (colIndex * (toolWidth + toolGap));
+      const yPos = yPosition + (rowIndex * (toolHeight + 8));
+
+      // Tool badge
+      doc.setFillColor(...colors.light);
+      doc.roundedRect(xPos, yPos, toolWidth, toolHeight, 2, 2, 'F');
+
+      // Tool name
+      doc.setFontSize(8);
+      doc.setTextColor(...colors.text);
+      doc.setFont("helvetica", "normal");
+      // Center the text in the badge
+      doc.text(tool.name, xPos + toolWidth/2, yPos + toolHeight/2, {
+        align: 'center',
+        baseline: 'middle'
+      });
+    });
+
+    // Add footer to all pages
     const pageCount = doc.internal.getNumberOfPages();
-    doc.setFontSize(8);
-    doc.setTextColor(...colors.text);
-    doc.setFont("helvetica", "italic");
 
     for (let i = 1; i <= pageCount; i++) {
       doc.setPage(i);
@@ -287,6 +343,9 @@ const generateResumePDF = async (resumeData) => {
       doc.line(20, 285, 190, 285);
 
       // Footer text
+      doc.setFontSize(8);
+      doc.setTextColor(...colors.text);
+      doc.setFont("helvetica", "italic");
       doc.text(`${personalInfo.name} - Resume - Page ${i} of ${pageCount}`, 105, 290, { align: 'center' });
 
       // Add QR code on last page if available
