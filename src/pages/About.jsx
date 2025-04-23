@@ -44,7 +44,7 @@ const About = () => {
   useEffect(() => {
     const fetchSkills = async () => {
       try {
-        const response = await axios.get(`${renderURL}/api/skills`);
+        const response = await axios.get(`${renderURL}/api/skills?populate=*`);
         const skillsData = response.data.data.map((skill) => ({
           id: skill.id,
           name: skill.Name,
