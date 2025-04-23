@@ -11,7 +11,7 @@ import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import ResumeContent from "../components/ResumeContent.jsx";
-import generateResumePDF from "../utils/PdfGenerator.js";
+import generateResumePDF from "../utils/PdfGenerator.jsx";
 
 const About = () => {
   // Destructure data from ResumeContent
