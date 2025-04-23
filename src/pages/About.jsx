@@ -42,7 +42,7 @@ const About = () => {
   useEffect(() => {
     const fetchSkills = async () => {
       try {
-        const response = await axios.get("http://localhost:1337/api/skills");
+        const response = await axios.get("https://strapi-s525.onrender.com/api/skills");
         const skillsData = response.data.data.map((skill) => ({
           id: skill.id,
           name: skill.Name,

@@ -1,4 +1,4 @@
-const API_URL = 'http://localhost:1337/api';
+const API_URL = 'https://strapi-s525.onrender.com/api';
 
 // Fetch all blogs from Strapi
 export const fetchBlogs = async () => {

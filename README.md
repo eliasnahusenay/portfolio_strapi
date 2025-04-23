@@ -8,16 +8,16 @@ Full stack portfolio project. This project is done as part of internship at Tuto
 
 - Strapi serves as backend for blog page, skill cards and contact form submission. The strapi can be displayed in glimpse.
 
-![Alt text](/frontend/public/images/blog02.png)
+![contact form submission](/public/images/blog02.png)
 
 - The blog content type is created and whenever the blog is added from backend it will be fetched in the frontend.
 
-![Alt text](/frontend/public/images/form01.png)
+![blog content](/public/images/form01.png)
 
 
 - Skill cards are also use strapi and they are rendered to the frontend.
 
-![Alt text](/frontend/public/images/skill03.png)
+![skill cards](/public/images/skill03.png)
 
 ***Deleting Content type***
 
@@ -86,7 +86,12 @@ ESLint: For code linting.
 
 ## The frontend ##
 
-The frontend is 
+The frontend used API endpoints from `'Strapi'` for Blog content, Skill Cards and Form Submission.
+
+![Alt text](/public/images/frontend01.png)
+![Alt text](/public/images/frontend02.png)
+![Alt text](/public/images/frontend3.png)
+
 
 
 

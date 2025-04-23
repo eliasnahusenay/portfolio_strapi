@@ -87,7 +87,7 @@ const ContactPage = () => {
     validationSchema,
     onSubmit: async (values, { resetForm, setSubmitting, setStatus }) => {
       try {
-        await axios.post('http://localhost:1337/api/contact-submissions', { data: values });
+        await axios.post('https://strapi-s525.onrender.com/api/contact-submissions', { data: values });
         resetForm();
         setStatus({ success: true });
       } catch (error) {

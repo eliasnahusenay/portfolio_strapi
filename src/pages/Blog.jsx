@@ -161,9 +161,9 @@ const Blog = () => {
               <motion.img
                 src={
                   selectedBlog.image?.url
-                    ? `http://localhost:1337${selectedBlog.image.url}`
+                    ? `https://strapi-s525.onrender.com${selectedBlog.image.url}`
                     : selectedBlog.image?.formats?.medium?.url
-                      ? `http://localhost:1337${selectedBlog.image.formats.medium.url}`
+                      ? `https://strapi-s525.onrender.com${selectedBlog.image.formats.medium.url}`
                       : "/default-image.jpg"
                 }
                 alt={selectedBlog.title || "Blog image"}
