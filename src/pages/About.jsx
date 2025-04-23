@@ -14,6 +14,8 @@ import ResumeContent from "../components/ResumeContent.jsx";
 import generateResumePDF from "../utils/PdfGenerator.jsx";
 
 
+const renderURL = import.meta.env.VITE_RENDER_URL;
+
 const About = () => {
   // Destructure data from ResumeContent
   const {
@@ -42,7 +44,7 @@ const About = () => {
   useEffect(() => {
     const fetchSkills = async () => {
       try {
-        const response = await axios.get("https://strapi-s525.onrender.com/api/skills");
+        const response = await axios.get(`${renderURL}/api/skills`);
         const skillsData = response.data.data.map((skill) => ({
           id: skill.id,
           name: skill.Name,

@@ -1,4 +1,6 @@
-const API_URL = 'https://strapi-s525.onrender.com/api';
+const renderURL = import.meta.env.VITE_RENDER_URL;
+
+const API_URL = `${renderURL}/api`;
 
 // Fetch all blogs from Strapi
 export const fetchBlogs = async () => {

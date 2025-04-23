@@ -73,6 +73,9 @@ const successVariants = {
   }
 };
 
+const renderURL = import.meta.env.VITE_RENDER_URL;
+
+
 const ContactPage = () => {
   const [isLoading, setIsLoading] = useState(true);
   const validationSchema = Yup.object().shape({
@@ -87,7 +90,7 @@ const ContactPage = () => {
     validationSchema,
     onSubmit: async (values, { resetForm, setSubmitting, setStatus }) => {
       try {
-        await axios.post('https://strapi-s525.onrender.com/api/contact-submissions', { data: values });
+        await axios.post(`${renderURL}/api/contact-submissions`, { data: values });
         resetForm();
         setStatus({ success: true });
       } catch (error) {

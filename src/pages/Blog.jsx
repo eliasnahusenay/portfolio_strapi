@@ -34,6 +34,9 @@ const Blog = () => {
     getBlogs();
   }, []);
 
+const renderURL = import.meta.env.VITE_RENDER_URL;
+
+
   // Handle reactions
   const handleReaction = async (type) => {
     if (!selectedBlog || isReacting) return;
@@ -161,9 +164,9 @@ const Blog = () => {
               <motion.img
                 src={
                   selectedBlog.image?.url
-                    ? `https://strapi-s525.onrender.com${selectedBlog.image.url}`
+                    ? `${renderURL}${selectedBlog.image.url}`
                     : selectedBlog.image?.formats?.medium?.url
-                      ? `https://strapi-s525.onrender.com${selectedBlog.image.formats.medium.url}`
+                      ? `${renderURL}${selectedBlog.image.formats.medium.url}`
                       : "/default-image.jpg"
                 }
                 alt={selectedBlog.title || "Blog image"}
@@ -374,9 +377,9 @@ const Blog = () => {
                     <img
                       src={
                         blog.image?.url
-                          ? `http://localhost:1337${blog.image.url}`
+                          ? `${renderURL}${blog.image.url}`
                           : blog.image?.formats?.small?.url
-                            ? `http://localhost:1337${blog.image.formats.small.url}`
+                            ? `${renderURL}${blog.image.formats.small.url}`
                             : "/default-image.jpg"
                       }
                       alt={blog.title || "Blog thumbnail"}
