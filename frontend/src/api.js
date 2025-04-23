@@ -1,4 +1,3 @@
-// src/api.js
 const API_URL = 'http://localhost:1337/api';
 
 // Fetch all blogs from Strapi

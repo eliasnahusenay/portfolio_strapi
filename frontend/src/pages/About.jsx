@@ -10,8 +10,8 @@ import {
 import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
 import axios from "axios";
-import ResumeContent from "../components/ResumeContent";
-import generateResumePDF from "../utils/PdfGenerator";
+import ResumeContent from "../components/ResumeContent.jsx";
+import generateResumePDF from "../utils/PdfGenerator.js";
 
 const About = () => {
   // Destructure data from ResumeContent
@@ -32,7 +32,6 @@ const About = () => {
     visible: { opacity: 1, y: 0 },
   };
 
-  // State management
   const [isLoading, setIsLoading] = useState(true);
   const [isGeneratingPdf, setIsGeneratingPdf] = useState(false);
   const [skills, setSkills] = useState([]);
