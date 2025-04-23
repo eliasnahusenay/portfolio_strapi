@@ -88,10 +88,10 @@ const ResumeContent = {
       featured: true
     },
     {
-      name: "Node.js",
+      name: "Symfony",
       percentage: 85,
       icon:
-        "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg",
+        "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/symfony/symfony-original.svg",
       featured: true
     },
     {
