@@ -1,5 +1,12 @@
 import Hero from "../components/Hero";
-import { FaCode, FaGraduationCap, FaBriefcase, FaTools, FaStar, FaDownload } from "react-icons/fa";
+import {
+  FaCode,
+  FaGraduationCap,
+  FaBriefcase,
+  FaTools,
+  FaStar,
+  FaDownload,
+} from "react-icons/fa";
 import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
 import axios from "axios";
@@ -14,7 +21,7 @@ const About = () => {
     experience,
     education,
     tools,
-    featuredSkills: staticFeaturedSkills
+    featuredSkills: staticFeaturedSkills,
   } = ResumeContent;
 
   const profileImage = personalInfo.photo;
@@ -61,10 +68,13 @@ const About = () => {
   const getIconForSkill = (skillName) => {
     if (!skillName) return null;
     const iconMap = {
-      react: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg",
-      postgresql: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg",
+      react:
+        "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg",
+      postgresql:
+        "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg",
       php: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg",
-      strapi: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/strapi/strapi-original.svg",
+      strapi:
+        "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/strapi/strapi-original.svg",
     };
     return iconMap[skillName.toLowerCase()] || null;
   };
@@ -76,11 +86,11 @@ const About = () => {
       const resumeData = {
         personalInfo: {
           ...personalInfo,
-          photo: profileImage
+          photo: profileImage,
         },
-        skills: skills.map(skill => ({
+        skills: skills.map((skill) => ({
           ...skill,
-          icon: skill.icon || getIconForSkill(skill.name)
+          icon: skill.icon || getIconForSkill(skill.name),
         })),
         experience,
         education,
@@ -88,8 +98,8 @@ const About = () => {
         stats,
         featuredSkills: [
           ...staticFeaturedSkills,
-          ...skills.filter(skill => skill.featured)
-        ]
+          ...skills.filter((skill) => skill.featured),
+        ],
       };
       await generateResumePDF(resumeData);
     } catch (error) {
@@ -101,24 +111,22 @@ const About = () => {
   };
 
   // Prepare categories and filtered skills
-  const categories = ["all", ...new Set(skills.map(skill => skill.category || "other"))];
-  const filteredSkills = activeCategory === "all"
-    ? skills
-    : skills.filter(skill => skill.category === activeCategory);
+  const categories = [
+    "all",
+    ...new Set(skills.map((skill) => skill.category || "other")),
+  ];
+  const filteredSkills =
+    activeCategory === "all"
+      ? skills
+      : skills.filter((skill) => skill.category === activeCategory);
 
-  const allFeaturedSkills = [...staticFeaturedSkills, ...skills.filter(skill => skill.featured)];
+  const allFeaturedSkills = [
+    ...staticFeaturedSkills,
+    ...skills.filter((skill) => skill.featured),
+  ];
 
   return (
     <div className="bg-gray-50 min-h-screen flex flex-col relative overflow-hidden">
-      {/* Background Blob */}
-      <div className="absolute top-0 right-0 w-[500px] h-[500px] opacity-5 -z-10">
-        <img
-          src="/blobsvg.svg"
-          alt="Background decoration"
-          className="w-full h-full"
-        />
-      </div>
-
       <Hero
         title="About Me"
         subtitle="Full-Stack Developer | Passionate about Web Development"
@@ -155,44 +163,35 @@ const About = () => {
         <div className="container mx-auto px-4 py-8 flex-1" id="resume-content">
           {/* Profile Section */}
           <motion.section
-            className="flex flex-col md:flex-row items-center gap-8 mb-16 relative"
+            className="flex flex-col md:flex-row items-center gap-12 mb-16"
             initial="hidden"
             animate="visible"
             variants={fadeIn}
           >
-            {/* Profile Photo Container */}
-            <div className="relative">
-              {/* Photo Frame Blob */}
-              <div className="absolute -top-6 -left-6 w-60 h-60 -z-10">
-                <img
-                  src="/blobsvg.svg"
-                  alt="Profile frame"
-                  className="w-full h-full opacity-30"
-                />
-              </div>
+            {/* Profile Image - Larger size */}
+            <motion.img
+              src={profileImage}
+              alt="Profile"
+              className="w-64 h-64 md:w-80 md:h-80 rounded-full shadow-xl border-4 border-blue-500 bg-white object-cover"
+            />
 
-              {/* Profile Image */}
-              <motion.img
-                src={profileImage}
-                alt="Profile"
-                className="relative w-48 h-48 rounded-full shadow-xl border-4 border-blue-500 bg-white"
-                whileHover={{ scale: 1.05 }}
-              />
-            </div>
-
-            {/* Profile Text Content */}
-            <div>
-              <h2 className="text-3xl font-bold text-gray-800">
+            <div className="md:max-w-[600px] mt-6 md:mt-0">
+              <h2 className="text-3xl font-bold text-gray-800 mb-6">
                 Hi, I'm {personalInfo.name}
               </h2>
-              <p className="text-lg text-gray-600 mt-4">
+              <p className="text-lg text-gray-600 leading-relaxed mb-8">
                 {personalInfo.summary}
               </p>
               {/* Stats */}
-              <div className="flex flex-wrap gap-6 mt-6">
+              <div className="flex flex-wrap gap-4">
                 {stats.map((stat, index) => (
-                  <div key={index} className="bg-white p-4 rounded-lg shadow-md text-center min-w-[120px]">
-                    <div className="text-2xl font-bold text-blue-600">{stat.value}</div>
+                  <div
+                    key={index}
+                    className="bg-white p-4 rounded-lg shadow-md text-center min-w-[120px]"
+                  >
+                    <div className="text-2xl font-bold text-blue-600">
+                      {stat.value}
+                    </div>
                     <div className="text-gray-600">{stat.label}</div>
                   </div>
                 ))}
@@ -201,20 +200,28 @@ const About = () => {
           </motion.section>
 
           {/* Skills Section */}
-          <motion.section className="mb-16" initial="hidden" animate="visible" variants={fadeIn} transition={{ delay: 0.1 }}>
+          <motion.section
+            className="mb-16"
+            initial="hidden"
+            animate="visible"
+            variants={fadeIn}
+            transition={{ delay: 0.1 }}
+          >
             <div className="flex items-center justify-between mb-8">
               <div className="flex items-center">
                 <FaCode className="text-blue-500 text-2xl mr-3" />
                 <h2 className="text-2xl font-bold text-gray-800">My Skills</h2>
               </div>
               <div className="flex flex-wrap gap-2">
-                {categories.map(category => (
+                {categories.map((category) => (
                   <button
                     key={category}
                     onClick={() => setActiveCategory(category)}
-                    className={`px-3 py-1 rounded-full text-sm capitalize ${activeCategory === category
-                      ? "bg-blue-500 text-white"
-                      : "bg-gray-200 text-gray-700 hover:bg-gray-300"}`}
+                    className={`px-3 py-1 rounded-full text-sm capitalize ${
+                      activeCategory === category
+                        ? "bg-blue-500 text-white"
+                        : "bg-gray-200 text-gray-700 hover:bg-gray-300"
+                    }`}
                   >
                     {category}
                   </button>
@@ -230,7 +237,11 @@ const About = () => {
                 </h3>
                 <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
                   {allFeaturedSkills.map((skill, index) => (
-                    <SkillCard key={skill.id || `featured-${index}`} {...skill} index={index} />
+                    <SkillCard
+                      key={skill.id || `featured-${index}`}
+                      {...skill}
+                      index={index}
+                    />
                   ))}
                 </div>
               </div>
@@ -245,10 +256,18 @@ const About = () => {
           </motion.section>
 
           {/* Experience Section */}
-          <motion.section className="mb-16 bg-white p-8 rounded-xl shadow-md" initial="hidden" animate="visible" variants={fadeIn} transition={{ delay: 0.2 }}>
+          <motion.section
+            className="mb-16 bg-white p-8 rounded-xl shadow-md"
+            initial="hidden"
+            animate="visible"
+            variants={fadeIn}
+            transition={{ delay: 0.2 }}
+          >
             <div className="flex items-center mb-8">
               <FaBriefcase className="text-blue-500 text-2xl mr-3" />
-              <h2 className="text-2xl font-bold text-gray-800">Professional Experience</h2>
+              <h2 className="text-2xl font-bold text-gray-800">
+                Professional Experience
+              </h2>
             </div>
             <div className="space-y-8">
               {experience.map((exp, index) => (
@@ -258,7 +277,13 @@ const About = () => {
           </motion.section>
 
           {/* Education Section */}
-          <motion.section className="mb-16" initial="hidden" animate="visible" variants={fadeIn} transition={{ delay: 0.3 }}>
+          <motion.section
+            className="mb-16"
+            initial="hidden"
+            animate="visible"
+            variants={fadeIn}
+            transition={{ delay: 0.3 }}
+          >
             <div className="flex items-center mb-8">
               <FaGraduationCap className="text-blue-500 text-2xl mr-3" />
               <h2 className="text-2xl font-bold text-gray-800">Education</h2>
@@ -271,10 +296,18 @@ const About = () => {
           </motion.section>
 
           {/* Tools Section */}
-          <motion.section className="bg-white p-8 rounded-xl shadow-md" initial="hidden" animate="visible" variants={fadeIn} transition={{ delay: 0.4 }}>
+          <motion.section
+            className="bg-white p-8 rounded-xl shadow-md"
+            initial="hidden"
+            animate="visible"
+            variants={fadeIn}
+            transition={{ delay: 0.4 }}
+          >
             <div className="flex items-center mb-8">
               <FaTools className="text-blue-500 text-2xl mr-3" />
-              <h2 className="text-2xl font-bold text-gray-800">Tools & Technologies</h2>
+              <h2 className="text-2xl font-bold text-gray-800">
+                Tools & Technologies
+              </h2>
             </div>
             <div className="flex flex-wrap gap-4">
               {tools.map((tool, index) => (
@@ -284,7 +317,11 @@ const About = () => {
                   whileHover={{ scale: 1.05 }}
                 >
                   {tool.icon && (
-                    <img src={tool.icon} alt={tool.name} className="w-5 h-5 mr-2" />
+                    <img
+                      src={tool.icon}
+                      alt={tool.name}
+                      className="w-5 h-5 mr-2"
+                    />
                   )}
                   <span className="text-gray-700">{tool.name}</span>
                 </motion.div>
@@ -298,9 +335,18 @@ const About = () => {
 };
 
 // Skill Card Component
-const SkillCard = ({ icon, name, percentage, description, featured, index }) => (
+const SkillCard = ({
+  icon,
+  name,
+  percentage,
+  description,
+  featured,
+  index,
+}) => (
   <motion.div
-    className={`bg-white p-6 rounded-lg shadow-md flex flex-col items-center text-center ${featured ? "border-2 border-yellow-400" : ""}`}
+    className={`bg-white p-6 rounded-lg shadow-md flex flex-col items-center text-center ${
+      featured ? "border-2 border-yellow-400" : ""
+    }`}
     whileHover={{ y: -5 }}
     initial={{ opacity: 0, y: 20 }}
     animate={{ opacity: 1, y: 0 }}
@@ -320,7 +366,10 @@ const SkillCard = ({ icon, name, percentage, description, featured, index }) => 
         <span>{percentage}%</span>
       </div>
       <div className="w-full bg-gray-200 rounded-full h-2">
-        <div className="bg-blue-500 h-2 rounded-full" style={{ width: `${percentage}%` }} />
+        <div
+          className="bg-blue-500 h-2 rounded-full"
+          style={{ width: `${percentage}%` }}
+        />
       </div>
     </div>
     {description && <p className="text-sm text-gray-600 mt-3">{description}</p>}
@@ -333,7 +382,13 @@ const SkillCard = ({ icon, name, percentage, description, featured, index }) => 
 );
 
 // Experience Item Component
-const ExperienceItem = ({ position, company, duration, description, index }) => (
+const ExperienceItem = ({
+  position,
+  company,
+  duration,
+  description,
+  index,
+}) => (
   <motion.div
     className="border-l-4 border-blue-500 pl-6 py-2"
     initial={{ opacity: 0, x: -20 }}
@@ -341,10 +396,13 @@ const ExperienceItem = ({ position, company, duration, description, index }) => 
     transition={{ delay: index * 0.15 }}
   >
     <h3 className="text-xl font-semibold text-gray-800">{position}</h3>
-    <p className="text-blue-600">{company} • {duration}</p>
+    <p className="text-blue-600">
+      {company} • {duration}
+    </p>
     <p className="mt-2 text-gray-600">{description}</p>
   </motion.div>
 );
+
 
 // Education Item Component
 const EducationItem = ({ degree, institution, year, index }) => (

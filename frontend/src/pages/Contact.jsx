@@ -108,11 +108,11 @@ const ContactPage = () => {
   }, []);
 
   const socialLinks = [
-    { icon: <FaGithub />, url: 'https://github.com/yourusername', name: 'GitHub' },
-    { icon: <FaLinkedin />, url: 'https://linkedin.com/in/yourprofile', name: 'LinkedIn' },
+    { icon: <FaGithub />, url: 'https://github.com/nahusenayElias', name: 'GitHub' },
+    { icon: <FaLinkedin />, url: 'https://www.linkedin.com/in/elias-nahusenay/', name: 'LinkedIn' },
     { icon: <FaTwitter />, url: 'https://twitter.com/yourhandle', name: 'Twitter' },
     { icon: <FaInstagram />, url: 'https://instagram.com/yourprofile', name: 'Instagram' },
-    { icon: <FaEnvelope />, url: 'mailto:youremail@example.com', name: 'Email' },
+    { icon: <FaEnvelope />, url: 'mailto:eliasars@yahoo.com', name: 'Email' },
   ];
 
   return (

@@ -1,7 +1,7 @@
 import Hero from "../components/Hero";
 import { motion } from "framer-motion";
 import { FiArrowRight } from "react-icons/fi";
-import { FaReact, FaNodeJs, FaDatabase } from "react-icons/fa";
+import { FaReact, FaNodeJs, FaDatabase, FaSymfony, FaDrupal } from "react-icons/fa";
 import { SiStrapi, SiTailwindcss } from "react-icons/si";
 import project1 from "../assets/projects/projects.png";
 import project2 from "../assets/projects/projects.png";
@@ -150,8 +150,9 @@ const Home = () => {
               <div className="grid grid-cols-2 md:grid-cols-5 gap-8 max-w-4xl mx-auto">
                 {[
                   { icon: <FaReact className="text-4xl text-blue-500" />, name: "React" },
+                  { icon: <FaSymfony className="text-4xl text-dark-500" />, name: "Symfony" },
+                  { icon: <FaDrupal className="text-4xl text-blue-600" />, name: "Drupal" },
                   { icon: <SiStrapi className="text-4xl text-blue-500" />, name: "Strapi" },
-                  { icon: <FaNodeJs className="text-4xl text-green-500" />, name: "Node.js" },
                   { icon: <SiTailwindcss className="text-4xl text-cyan-500" />, name: "Tailwind" },
                   { icon: <FaDatabase className="text-4xl text-gray-500" />, name: "PostgreSQL" }
                 ].map((tech, index) => (

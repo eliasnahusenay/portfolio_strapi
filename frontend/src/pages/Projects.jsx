@@ -1,9 +1,12 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { FiGithub, FiExternalLink, FiFilter, FiX } from 'react-icons/fi';
-import { FaReact, FaNodeJs } from 'react-icons/fa';
-import { SiStrapi, SiTailwindcss } from 'react-icons/si';
+import { FaReact } from 'react-icons/fa';
+import { SiSymfony, SiDrupal, SiTailwindcss, SiStrapi, SiTypescript, SiRedux } from 'react-icons/si';
 import Hero from '../components/Hero';
+
+
+
 
 const Projects = () => {
   // State management
@@ -16,16 +19,30 @@ const Projects = () => {
   const sampleProjects = [
     {
       id: 1,
-      title: "E-Commerce Platform",
-      description: "Full-featured online store with React frontend and Strapi backend",
-      tags: ["React", "Strapi", "Full Stack"],
-      techStack: ["react", "strapi"],
-      githubUrl: "https://github.com/example",
-      liveUrl: "https://example.com",
-      imageUrl: "/project1.jpg" // Replace with your image path
+      title: "Countries App",
+      description: "A React advanced course as part of React24K program, in this app we can add favourite countries and remove from favourites. Also it fetches the top ten news about each country when selected. In this app, we learnt React in depth with variety of React features",
+      tags: ["React", "Tailwind", "Firebase"],
+      techStack: ["react", "tailwind"],
+      githubUrl: "https://github.com/nahusenayElias/Countries_API",
+      liveUrl: "",
+      imageUrl: "./assets/projects/countries.png"
+
     },
     {
+
+
       id: 2,
+      title: "Symfony Palindrome Project",
+      description: "A symfony palindrome project, where when we enter words it checks if the word is a palindrome or not",
+      tags: ["Symfony", "React"],
+      techStack: ["react", "symfony"],
+      githubUrl: "https://github.com/nahusenayElias/symfony_palindrome",
+      liveUrl: "https://example.com",
+      imageUrl: "./assets/projects/palindrome.png"
+    },
+
+    {
+      id: 3,
       title: "Portfolio CMS",
       description: "Custom content management system for creatives",
       tags: ["React", "Node.js", "MongoDB"],
@@ -34,11 +51,53 @@ const Projects = () => {
       liveUrl: "https://example.com",
       imageUrl: "/project2.jpg"
     },
-    // Add more projects as needed
+    {
+      id: 4,
+      title: "Final Team Project II: Drupal with Mautic",
+      description: "We learn Drupal at school and in this project we experienced Mautic marketing automation module for final project with partner company Druid",
+      tags: ["React", "Drupal", "Mautic", "Tailwind"],
+      techStack: ["react", "Drupal"],
+      githubUrl: "https://github.com/nahusenayElias/Team_4",
+      imageUrl: "./assets/projects/team4.png"
+    },
+    {
+      id: 5,
+      title: "Online Store Redux App",
+      description: "A Redux online store app, where with fake store api makes the call and add to the cart and remove from the cart. This project was part of React Advanced course to acquaint ourselves with Redux",
+      tags: ["React", "Redux"],
+      techStack: ["react", "redux"],
+      githubUrl: "https://github.com/nahusenayElias/online-store-redux-app",
+      liveUrl: "https://example.com",
+      imageUrl: "./assets/projects/countries.png"
+    },
+
+    {
+      id: 6,
+      title: "Online Store TypeScript App",
+      description: "A TypeScript online store app, where with fake store api makes the call and add to the cart and remove from the cart. This project was part of React Advanced course to acquaint ourselves with TypeScript",
+      tags: ["React", "TypeScript"],
+      techStack: ["react", "typescript"],
+      githubUrl: "https://github.com/nahusenayElias/online-store-typescript",
+      liveUrl: "https://example.com",
+      imageUrl: "./assets/projects/countries.png"
+
+    },
+    {
+      id: 7,
+      title: "Animals App",
+      description: "A TypeScript online store app, where with fake store api makes the call and add to the cart and remove from the cart. This project was part of React Advanced course to acquaint ourselves with TypeScript",
+      tags: ["React", "JavaScript"],
+      techStack: ["react", "javascript"],
+      githubUrl: "https://github.com/nahusenayElias/online-store-typescript",
+      liveUrl: "https://eliashagos.netlify.app/",
+      imageUrl: "./assets/projects/countries.png"
+
+    }
+
+
   ];
 
   useEffect(() => {
-    // Simulate API loading
     const timer = setTimeout(() => {
       setProjects(sampleProjects);
       setFilteredProjects(sampleProjects);
@@ -49,7 +108,7 @@ const Projects = () => {
   }, []);
 
   // Filter categories
-  const categories = ['All', 'React', 'Strapi', 'Full Stack', 'Frontend'];
+  const categories = ['All', 'React', 'Symfony', 'Drupal', 'Tailwind', 'TypeScript', 'Redux', 'Full Stack'];
 
   // Filter handler
   const handleFilter = (category) => {
@@ -168,10 +227,14 @@ const ProjectCard = ({ project, index }) => {
   // Tech icon mapping
   const techIcons = {
     react: <FaReact className="text-blue-500" />,
+    symfony: <SiSymfony className="text-black-500" />,
+    drupal: <SiDrupal className="text-blue-600" />,
+    typescript: <SiTypescript className="text-blue-500" />,
     strapi: <SiStrapi className="text-blue-500" />,
-    node: <FaNodeJs className="text-green-500" />,
+    redux: <SiRedux className="text-purple-500" />,
     tailwind: <SiTailwindcss className="text-cyan-500" />
   };
+
 
   return (
     <motion.div

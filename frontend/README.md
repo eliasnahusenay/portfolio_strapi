@@ -1,16 +1,27 @@
 # Portfolio Project
 
-Full stack portfolio project. The technologies used are: Strapi, React JS.
+Full stack portfolio project. This project is done as part of internship at Tutors. In this project, the project demonstrates web-development skills as well as the projects I have built as part of my studies for `'Full Stack Web Development program at Business College Helsinki'`. The technologies used are: Strapi backend, React JS frontend and for UI Tailwind CSS.
 
-## Strapi CMS
+## The backend ##
 
-- Strapi serves as backend for blog page and contact form submission. The blog content type is created and whenever the blog is added from backend it will be fetched in the frontend.
-- Contact submission form is also use strapi and the data submitted in the frontend contact form. It will be added to the backend.
+**Strapi CMS**
 
+- Strapi serves as backend for blog page, skill cards and contact form submission. The strapi can be displayed in glimpse.
+
+![Alt text](/frontend/public/images/blog02.png)
+
+- The blog content type is created and whenever the blog is added from backend it will be fetched in the frontend.
+
+![Alt text](/frontend/public/images/form01.png)
+
+
+- Skill cards are also use strapi and they are rendered to the frontend.
+
+![Alt text](/frontend/public/images/skill03.png)
 
 ***Deleting Content type***
 
-- Due to erroneous content type configuration and corrupt content type and db. The following steps saves  the day:
+- Due to erroneous content type configuration and corrupt content type and db. The following measures were taken:
 
 **Step one**
 
@@ -54,6 +65,28 @@ Frontend dependency used for the form submission:
 ```shell
 npm install react-icons formik yup axios
 ```
+
+**Key Frontend Technologies**
+
+React: UI library for building interactive interfaces.
+
+Vite: Fast build tool and dev server.
+
+Tailwind CSS: Utility-first CSS for styling.
+
+Formik & Yup: For form handling and validation.
+
+Axios: For HTTP requests.
+
+framer-motion: For animations.
+
+jsPDF & html2canvas: For generating PDFs and screenshots.
+
+ESLint: For code linting.
+
+## The frontend ##
+
+The frontend is 
 
 
 

@@ -1,9 +1,9 @@
-import profileImage from "../assets/images/profile.jpeg";
+import profileImage from "../assets/images/img.png";
 import qrCodeImage from "../assets/images/frame.png";
 
 import emailIcon from "../assets/icons/email.png";
 import phoneIcon from "../assets/icons/phone.png";
-import locationIcon from "../assets/icons/location.png";
+import locationIcon from "../assets/icons/location1.png";
 
 const ResumeContent = {
   personalInfo: {
@@ -29,16 +29,16 @@ const ResumeContent = {
 
   stats: [
     { value: "1+", label: "Years Experience" },
-    { value: "10+", label: "Projects" }
+    { value: "20+", label: "Projects" }
   ],
 
   experience: [
     {
-      position: "Freelancer",
-      company: "Digital Agency",
+      position: "Intern",
+      company: "Tutors",
       period: "2025–present",
       description:
-        "Developed responsive websites and e-commerce platforms for various clients using modern frontend and backend frameworks."
+        "Developed responsive websites and e-commerce platforms using modern frontend and backend frameworks."
     },
     {
       position: "Capacity Building Officer",
@@ -69,10 +69,12 @@ const ResumeContent = {
   ],
 
   skills: [
-    { name: "React", level: 90, featured: true },
-    { name: "PHP", level: 85, featured: true },
-    { name: "JavaScript", level: 95, featured: true },
-    { name: "Symfony", level: 80 },
+    { name: "React", level: 80, featured: true },
+    { name: "PHP", level: 75, featured: true },
+    { name: "JavaScript", level: 75, featured: true },
+    { name: "Symfony", level: 70 },
+    { name: "Drupal", level: 80 },
+    { name: "Strapi", level: 70 },
     { name: "CSS/SCSS", level: 85 },
     { name: "Postgresql", level: 75 }
   ],
