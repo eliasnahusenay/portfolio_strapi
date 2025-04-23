@@ -47,13 +47,12 @@ const About = () => {
         const response = await axios.get(`${renderURL}/api/skills?populate=*`);
         const skillsData = response.data.data.map((skill) => ({
           id: skill.id,
-          name: skill.Name,
-          percentage: Math.round((skill.proficiencyLevel / 10) * 100),
-          description: skill.Description,
-          category: skill.category || "other",
-          icon: getIconForSkill(skill.Name),
-          featured: skill.featured || false,
-          documentId: skill.documentId,
+          name: skill.attributes.Name,
+          percentage: Math.round((skill.attributes.proficiencyLevel / 10) * 100),
+          description: skill.attributes.Description,
+          category: skill.attributes.category || "other",
+          icon: skill.attributes.icon?.data?.attributes?.url || getIconForSkill(skill.attributes.Name),
+          featured: skill.attributes.featured || false,
         }));
         setSkills(skillsData);
         setIsLoading(false);
@@ -70,13 +69,11 @@ const About = () => {
   const getIconForSkill = (skillName) => {
     if (!skillName) return null;
     const iconMap = {
-      react:
-        "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg",
-      postgresql:
-        "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg",
+      react: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg",
+      symfony: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/symfony/symfony-original.svg",
+      postgresql: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg",
       php: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg",
-      strapi:
-        "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/strapi/strapi-original.svg",
+      strapi: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/strapi/strapi-original.svg",
     };
     return iconMap[skillName.toLowerCase()] || null;
   };
@@ -337,14 +334,7 @@ const About = () => {
 };
 
 // Skill Card Component
-const SkillCard = ({
-  icon,
-  name,
-  percentage,
-  description,
-  featured,
-  index,
-}) => (
+const SkillCard = ({ icon, name, percentage, description, featured, index }) => (
   <motion.div
     className={`bg-white p-6 rounded-lg shadow-md flex flex-col items-center text-center ${
       featured ? "border-2 border-yellow-400" : ""
@@ -354,13 +344,23 @@ const SkillCard = ({
     animate={{ opacity: 1, y: 0 }}
     transition={{ delay: index * 0.1 }}
   >
-    {icon ? (
-      <img src={icon} alt={name} className="w-12 h-12 mb-4 object-contain" />
-    ) : (
-      <div className="w-12 h-12 mb-4 bg-gray-200 rounded-full flex items-center justify-center">
-        <FaCode className="text-gray-500 text-xl" />
-      </div>
-    )}
+    <div className="w-12 h-12 mb-4 flex items-center justify-center">
+      {icon ? (
+        <img
+          src={`${renderURL}${icon}`}
+          alt={name}
+          className="w-full h-full object-contain p-1"
+          onError={(e) => {
+            e.target.style.display = 'none';
+            e.target.nextSibling.style.display = 'flex';
+          }}
+        />
+      ) : (
+        <div className="w-full h-full bg-gray-200 rounded-full flex items-center justify-center">
+          <FaCode className="text-gray-500 text-xl" />
+        </div>
+      )}
+    </div>
     <h3 className="font-semibold text-gray-800">{name}</h3>
     <div className="w-full mt-3">
       <div className="flex justify-between text-xs text-gray-500 mb-1">
@@ -382,6 +382,7 @@ const SkillCard = ({
     )}
   </motion.div>
 );
+
 
 // Experience Item Component
 const ExperienceItem = ({
