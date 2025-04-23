@@ -82,21 +82,21 @@ const ResumeContent = {
   featuredSkills: [
     {
       name: "React",
-      percentage: 90,
+      percentage: 80,
       icon:
         "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg",
       featured: true
     },
     {
       name: "Symfony",
-      percentage: 85,
+      percentage: 70,
       icon:
         "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/symfony/symfony-original.svg",
       featured: true
     },
     {
       name: "JavaScript",
-      percentage: 95,
+      percentage: 75,
       icon:
         "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg",
       featured: true
