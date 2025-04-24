@@ -3,9 +3,9 @@ import { motion } from "framer-motion";
 import { FiArrowRight } from "react-icons/fi";
 import { FaReact, FaNodeJs, FaDatabase, FaSymfony, FaDrupal } from "react-icons/fa";
 import { SiStrapi, SiTailwindcss } from "react-icons/si";
-import project1 from "../assets/projects/projects.png";
-import project2 from "../assets/projects/projects.png";
-import project3 from "../assets/projects/projects.png";
+import project1 from "../assets/projects/redux.png";
+import project2 from "../assets/projects/animage.png";
+import project3 from "../assets/projects/countries.png";
 import { useState, useEffect } from "react";
 
 const Home = () => {
@@ -34,39 +34,15 @@ const Home = () => {
       description: "Countries react app, we can add favourite countries, remove favourite and used News API from selected to display top ten news",
       tags: ["React", "Firebase", "Tailwind"],
       image: project2,
-      link: "/projects/2"
+      link: "https://github.com/nahusenayElias/Countries_API"
     },
     {
       id: 3,
-      title: "Task Manager",
-      description: "Productivity app with real-time collaboration",
+      title: "Animal app",
+      description: "React project with categories of Fishes, Birds, Insects and Animals. This app used advanced react concepts.",
       tags: ["React", "Firebase", "Redux"],
       image: project3,
-      link: "/projects/3"
-    },
-    {
-      id: 4,
-      title: "Redux online store app",
-      description: "Full-featured online store with React & Strapi backend",
-      tags: ["React", "Redux", "Bootstrap"],
-      image: project1,
-      link: "https://github.com/nahusenayElias/online-store-redux-app"
-    },
-    {
-      id: 5,
-      title: "Redux online store app",
-      description: "Full-featured online store with React & Strapi backend",
-      tags: ["React", "Redux", "Bootstrap"],
-      image: project1,
-      link: "https://github.com/nahusenayElias/online-store-redux-app"
-    },
-    {
-      id: 6,
-      title: "Redux online store app",
-      description: "Full-featured online store with React & Strapi backend",
-      tags: ["React", "Redux", "Bootstrap"],
-      image: project1,
-      link: "https://github.com/nahusenayElias/online-store-redux-app"
+      link: "https://github.com/nahusenayElias/react_zoo_app"
     }
   ];
 

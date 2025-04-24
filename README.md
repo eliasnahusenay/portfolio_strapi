@@ -93,6 +93,11 @@ The frontend used API endpoints from `'Strapi'` for Blog content, Skill Cards an
 ![Alt text](/public/images/frontend3.png)
 
 
+## Portfolio is Hosted in Netlify and Render ##
+
+- For backend click [here](https://strapi-s525.onrender.com), the dashboard can be reached but to login admin credentials are required.
+
+- For frontend click [here](https://eliashagosportfolio.netlify.app/)
 
 
 

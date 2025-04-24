@@ -24,7 +24,6 @@ const Projects = () => {
       tags: ["React", "Tailwind", "Firebase"],
       techStack: ["react", "tailwind"],
       githubUrl: "https://github.com/nahusenayElias/Countries_API",
-      liveUrl: "",
       imageUrl: "./assets/projects/countries.png"
 
     },
@@ -32,33 +31,33 @@ const Projects = () => {
 
 
       id: 2,
-      title: "Symfony Palindrome Project",
-      description: "A symfony palindrome project, where when we enter words it checks if the word is a palindrome or not",
-      tags: ["Symfony", "React"],
-      techStack: ["react", "symfony"],
-      githubUrl: "https://github.com/nahusenayElias/symfony_palindrome",
-      liveUrl: "https://example.com",
-      imageUrl: "./assets/projects/palindrome.png"
-    },
-
-    {
-      id: 3,
-      title: "Portfolio CMS",
-      description: "Custom content management system for creatives",
-      tags: ["React", "Node.js", "MongoDB"],
-      techStack: ["react", "node"],
-      githubUrl: "https://github.com/example",
-      liveUrl: "https://example.com",
-      imageUrl: "/project2.jpg"
-    },
-    {
-      id: 4,
       title: "Final Team Project II: Drupal with Mautic",
       description: "We learn Drupal at school and in this project we experienced Mautic marketing automation module for final project with partner company Druid",
       tags: ["React", "Drupal", "Mautic", "Tailwind"],
       techStack: ["react", "Drupal"],
       githubUrl: "https://github.com/nahusenayElias/Team_4",
       imageUrl: "./assets/projects/team4.png"
+
+    },
+
+    {
+      id: 3,
+      title: "Symfony Portfolio",
+      description: "Symfony project done to refresh symfony skills and continue the learning journey.",
+      tags: ["Tailwind", "Symfony", "Postgresql"],
+      techStack: ["react", "node"],
+      githubUrl: "https://github.com/nahusenayElias/symfony_portfolio",
+      imageUrl: "./assets/projects/symfony_portfolio.png"
+    },
+    {
+
+      id: 4,
+      title: "Symfony Palindrome Project",
+      description: "A symfony palindrome project, where when we enter words it checks if the word is a palindrome or not",
+      tags: ["Symfony", "React"],
+      techStack: ["react", "symfony"],
+      githubUrl: "https://github.com/nahusenayElias/symfony_palindrome",
+      imageUrl: "./assets/projects/palindrome.png"
     },
     {
       id: 5,
@@ -67,7 +66,6 @@ const Projects = () => {
       tags: ["React", "Redux"],
       techStack: ["react", "redux"],
       githubUrl: "https://github.com/nahusenayElias/online-store-redux-app",
-      liveUrl: "https://example.com",
       imageUrl: "./assets/projects/countries.png"
     },
 
@@ -78,7 +76,6 @@ const Projects = () => {
       tags: ["React", "TypeScript"],
       techStack: ["react", "typescript"],
       githubUrl: "https://github.com/nahusenayElias/online-store-typescript",
-      liveUrl: "https://example.com",
       imageUrl: "./assets/projects/countries.png"
 
     },
@@ -88,7 +85,7 @@ const Projects = () => {
       description: "A TypeScript online store app, where with fake store api makes the call and add to the cart and remove from the cart. This project was part of React Advanced course to acquaint ourselves with TypeScript",
       tags: ["React", "JavaScript"],
       techStack: ["react", "javascript"],
-      githubUrl: "https://github.com/nahusenayElias/online-store-typescript",
+      githubUrl: "https://github.com/nahusenayElias/react_zoo_app",
       liveUrl: "https://eliashagos.netlify.app/",
       imageUrl: "./assets/projects/countries.png"
 
