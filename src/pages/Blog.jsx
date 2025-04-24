@@ -164,9 +164,9 @@ const renderURL = import.meta.env.VITE_RENDER_URL;
               <motion.img
                 src={
                   selectedBlog.image?.url
-                    ? `${renderURL}${selectedBlog.image.url}`
+                    ? `${renderURL}/${selectedBlog.image.url}`
                     : selectedBlog.image?.formats?.medium?.url
-                      ? `${renderURL}${selectedBlog.image.formats.medium.url}`
+                      ? `${renderURL}/${selectedBlog.image.formats.medium.url}`
                       : "/default-image.jpg"
                 }
                 alt={selectedBlog.title || "Blog image"}
