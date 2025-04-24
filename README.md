@@ -88,9 +88,7 @@ ESLint: For code linting.
 
 The frontend used API endpoints from `'Strapi'` for Blog content, Skill Cards and Form Submission.
 
-![Alt text](/public/images/frontend01.png)
 ![Alt text](/public/images/frontend02.png)
-![Alt text](/public/images/frontend3.png)
 
 
 ## Portfolio is Hosted in Netlify and Render ##
