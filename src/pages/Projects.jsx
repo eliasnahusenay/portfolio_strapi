@@ -21,7 +21,7 @@ const Projects = () => {
       id: 1,
       title: "Countries App",
       description: "A React advanced course as part of React24K program, in this app we can add favourite countries and remove from favourites. Also it fetches the top ten news about each country when selected. In this app, we learnt React in depth with variety of React features",
-      tags: ["React", "Tailwind", "Firebase"],
+      tags: ["React", "Tailwind", "Firebase", "Full Stack"],
       techStack: ["react", "tailwind"],
       githubUrl: "https://github.com/nahusenayElias/Countries_API",
       imageUrl: "./assets/projects/countries.png"
@@ -33,7 +33,7 @@ const Projects = () => {
       id: 2,
       title: "Final Team Project II: Drupal with Mautic",
       description: "We learn Drupal at school and in this project we experienced Mautic marketing automation module for final project with partner company Druid",
-      tags: ["React", "Drupal", "Mautic", "Tailwind"],
+      tags: ["React", "Drupal", "Mautic", "Tailwind", "Full Stack"],
       techStack: ["react", "Drupal"],
       githubUrl: "https://github.com/nahusenayElias/Team_4",
       imageUrl: "./assets/projects/team4.png"
@@ -44,8 +44,8 @@ const Projects = () => {
       id: 3,
       title: "Symfony Portfolio",
       description: "Symfony project done to refresh symfony skills and continue the learning journey.",
-      tags: ["Tailwind", "Symfony", "Postgresql"],
-      techStack: ["react", "node"],
+      tags: ["Tailwind", "Symfony", "Postgresql", "Full Stack"],
+      techStack: ["react", "Symfony"],
       githubUrl: "https://github.com/nahusenayElias/symfony_portfolio",
       imageUrl: "./assets/projects/symfony_portfolio.png"
     },
@@ -54,7 +54,7 @@ const Projects = () => {
       id: 4,
       title: "Symfony Palindrome Project",
       description: "A symfony palindrome project, where when we enter words it checks if the word is a palindrome or not",
-      tags: ["Symfony", "React"],
+      tags: ["Symfony", "React", "Full Stack"],
       techStack: ["react", "symfony"],
       githubUrl: "https://github.com/nahusenayElias/symfony_palindrome",
       imageUrl: "./assets/projects/palindrome.png"
@@ -63,31 +63,33 @@ const Projects = () => {
       id: 5,
       title: "Online Store Redux App",
       description: "A Redux online store app, where with fake store api makes the call and add to the cart and remove from the cart. This project was part of React Advanced course to acquaint ourselves with Redux",
-      tags: ["React", "Redux"],
-      techStack: ["react", "redux"],
+      tags: ["React", "Redux", "Full Stack", "Tailwind"],
+      techStack: ["react", "redux", "Tailwind"],
       githubUrl: "https://github.com/nahusenayElias/online-store-redux-app",
-      imageUrl: "./assets/projects/countries.png"
+      imageUrl: "./assets/projects/redux.png"
     },
 
     {
       id: 6,
-      title: "Online Store TypeScript App",
+      title: "Animals App",
       description: "A TypeScript online store app, where with fake store api makes the call and add to the cart and remove from the cart. This project was part of React Advanced course to acquaint ourselves with TypeScript",
-      tags: ["React", "TypeScript"],
-      techStack: ["react", "typescript"],
-      githubUrl: "https://github.com/nahusenayElias/online-store-typescript",
-      imageUrl: "./assets/projects/countries.png"
+      tags: ["React", "JavaScript", "Full Stack", "Tailwind"],
+      techStack: ["react", "Tailwind"],
+      githubUrl: "https://github.com/nahusenayElias/react_zoo_app",
+      liveUrl: "https://eliashagos.netlify.app/",
+      imageUrl: "./assets/projects/animals.png"
+
 
     },
     {
       id: 7,
-      title: "Animals App",
+      title: "Online Store TypeScript App",
       description: "A TypeScript online store app, where with fake store api makes the call and add to the cart and remove from the cart. This project was part of React Advanced course to acquaint ourselves with TypeScript",
-      tags: ["React", "JavaScript"],
-      techStack: ["react", "javascript"],
-      githubUrl: "https://github.com/nahusenayElias/react_zoo_app",
-      liveUrl: "https://eliashagos.netlify.app/",
-      imageUrl: "./assets/projects/countries.png"
+      tags: ["React", "TypeScript", "Full Stack", "Tailwind"],
+      techStack: ["react", "typescript", "Tailwind"],
+      githubUrl: "https://github.com/nahusenayElias/online-store-typescript",
+      imageUrl: "./assets/projects/redux.png"
+
 
     }
 

@@ -45,15 +45,22 @@ const About = () => {
     const fetchSkills = async () => {
       try {
         const response = await axios.get(`${renderURL}/api/skills?populate=*`);
-        const skillsData = response.data.data.map((skill) => ({
-          id: skill.id,
-          name: skill.attributes.Name,
-          percentage: Math.round((skill.attributes.proficiencyLevel / 10) * 100),
-          description: skill.attributes.Description,
-          category: skill.attributes.category || "other",
-          icon: skill.attributes.icon?.data?.attributes?.url || getIconForSkill(skill.attributes.Name),
-          featured: skill.attributes.featured || false,
-        }));
+
+        const skillsData = response.data.data.map((skill) => {
+          const iconData = skill.Icon?.[0]; // icon is an array
+          const iconUrl = iconData?.formats?.small?.url || iconData?.url;
+
+          return {
+            id: skill.id,
+            name: skill.Name,
+            percentage: Math.round((skill.proficiencyLevel / 10) * 100),
+            description: skill.Description,
+            category: skill.category || "other",
+            icon: iconUrl ? `${renderURL}${iconUrl}` : getIconForSkill(skill.Name),
+            featured: skill.featured || false,
+          };
+        });
+
         setSkills(skillsData);
         setIsLoading(false);
       } catch (error) {
@@ -64,6 +71,8 @@ const About = () => {
 
     fetchSkills();
   }, []);
+
+
 
   // Helper function to get skill icons
   const getIconForSkill = (skillName) => {
@@ -347,7 +356,7 @@ const SkillCard = ({ icon, name, percentage, description, featured, index }) => 
     <div className="w-12 h-12 mb-4 flex items-center justify-center">
       {icon ? (
         <img
-          src={`${renderURL}${icon}`}
+          src={icon}
           alt={name}
           className="w-full h-full object-contain p-1"
           onError={(e) => {
