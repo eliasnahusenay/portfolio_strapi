@@ -28,17 +28,17 @@ const ResumeContent = {
   },
 
   stats: [
-    { value: "1+", label: "Years Experience" },
-    { value: "20+", label: "Projects" }
+    { value: "2+", label: "Years Experience" },
+    { value: "30+", label: "Projects" }
   ],
 
   experience: [
     {
       position: "Intern",
-      company: "Tutors",
-      period: "2025–present",
+      company: "Tutors Oy",
+      period: "03.02.2025 – 30.04.2025",
       description:
-        "Developed responsive websites and e-commerce platforms using modern frontend and backend frameworks."
+        "Part of the team that developed responsive website and e-commerce platform for Kiosco Amanda a Spanish restaurant website using modern frontend and backend frameworks."
     },
     {
       position: "Capacity Building Officer",
